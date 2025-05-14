@@ -57,6 +57,12 @@
   font-weight: 600;
 }
 
+.details {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .ctas {
   display: flex;
   gap: 16px;

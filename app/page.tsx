@@ -5,6 +5,8 @@ import Switch from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import WoodPerHourAverager from "./components/WoodPerHourAverager";
 import RemoveByIdForm from "./components/RemoveByIdForm";
+import AddWoodChuckButton from "./components/AddWoodChuckButton";
+// import WoodChuckDataGrid from "./components/DataGrid";
 const WoodChuckDataGrid = lazy(() => import("./components/DataGrid"));
 
 const woodChucks = [
@@ -99,6 +101,10 @@ export default function Home() {
     setData(newData);
   };
 
+  const AddWoodChuck = (newWoodChuck: any) => {
+    setData((prevData) => [...prevData, newWoodChuck]);
+  };
+
   const toggle = () => {
     setCanChuck(!canChuck);
   };
@@ -112,7 +118,10 @@ export default function Home() {
             label="Can they chuck?"
           />
           <WoodPerHourAverager data={data} canChuck={canChuck} />
+        </div>
+        <div className={styles.details}>
           <RemoveByIdForm onRemove={removeWoodChuck} />
+          <AddWoodChuckButton onAdd={AddWoodChuck}/>
         </div>
         <Suspense fallback={<div>Loading...</div>}>
           <WoodChuckDataGrid data={data} canChuck={canChuck} />

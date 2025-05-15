@@ -2,7 +2,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
-import { set } from 'lodash'
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 90 },
@@ -38,8 +37,12 @@ const columns = [
 ];
 
 export default function WoodChuckDataGrid({ data, canChuck }) {
+
+React.useEffect(() => {
+  console.log(data);
+}, [data]);
   return (
-    <Box sx={{ height: 1000, width: '100%' }}>
+    <Box sx={{ height: 600, width: '100%' }}>
       <DataGrid
         rows={data}
         columns={columns.map(col =>
@@ -47,15 +50,6 @@ export default function WoodChuckDataGrid({ data, canChuck }) {
             ? { ...col, renderCell: (params) => (canChuck ? params.value : 0) }
             : col
         )}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 10,
-            },
-          },
-        }}
-        pageSizeOptions={[10]}
-        checkboxSelection
         disableRowSelectionOnClick
       />
     </Box>

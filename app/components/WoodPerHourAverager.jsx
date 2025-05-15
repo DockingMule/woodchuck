@@ -8,7 +8,7 @@ export default function WoodPerHourAverage({ data, canChuck }) {
         ).toFixed(2)
       : 0;
   return (
-    <span style={{ fontWeight: "bold", marginLeft: 16 }}>
+    <span style={{ fontWeight: "bold" }}>
       Average Wood Per Hour: {avg}
     </span>
   );
